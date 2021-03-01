@@ -1,29 +1,19 @@
-import { StyleSheet, Text, View, TextInput, TouchableOpacity} from 'react-native';
+import {StyleSheet, Text, View, TextInput, TouchableOpacity, Image} from 'react-native';
 import React from "react";
+import logo from "../assets/icon.png";
 
-export default function SignIn() {
+export default function SignUp() {
     return (
         <View style={styles.container}>
-            <Text style={styles.heading}>Create an account</Text>
-            <Text style={styles.paragraph}>Create your account and
-            join ever evolving conversations near you! discover
-            people and whatever the fuck</Text>
+            <Image style={styles.logo} source={logo}/>
 
-            <Text style={styles.field}>First Name</Text>
-            <TextInput placeholder="John"/>
+            <Text style={styles.heading}> Join ever evolving conversations near you! 🌐 </Text>
 
-            <Text style={styles.field}>Last Name</Text>
-            <TextInput placeholder="Bull"/>
-
-
-            <Text style={styles.field}>Email</Text>
-            <TextInput placeholder="johnbull@gmail.com"/>
-
-            <Text style={styles.field}>Password</Text>
-            <TextInput placeholder="*********"/>
-
-            <Text style={styles.field}>Password</Text>
-            <TextInput placeholder="+234 803 335 4342"/>
+            <TextInput style={styles.field} placeholder="John"/>
+            <TextInput style={styles.field} placeholder="Bull"/>
+            <TextInput style={styles.field} placeholder="johnbull@gmail.com"/>
+            <TextInput style={styles.field} placeholder="+234 803 335 4342"/>
+            <TextInput style={styles.field} placeholder="*********"/>
 
             <TouchableOpacity
                 onPress={() => console.log("sign up")}
@@ -32,6 +22,10 @@ export default function SignIn() {
                     Sign up
                 </Text>
             </TouchableOpacity>
+
+            <Text style={styles.paragraph} onPress={() => console.log("sign up nav")}>
+                i already have an account! <Text style={styles.signInNav}>sign in</Text>
+            </Text>
         </View>
     );
 }
@@ -39,8 +33,58 @@ export default function SignIn() {
 const styles = StyleSheet.create({
     container: {
         flex: 1,
-        backgroundColor: '#323332',
+        backgroundColor: '#161618',
         alignItems: 'center',
         justifyContent: 'center',
+    },
+    logo: {
+        alignItems: 'center',
+        justifyContent: 'center',
+        width: 200,
+        height: 200
+    },
+    heading: {
+        color: "#ffffff",
+        padding: 5,
+        fontSize: 22,
+        width: 300,
+        margin: 10,
+        textTransform: "capitalize",
+        textAlign: "center"
+    },
+    title: {
+        color: "#000",
+        padding: 5,
+        fontSize: 15,
+        width: 300,
+    },
+    field: {
+        backgroundColor: "#fff",
+        padding: 10,
+        width: 300,
+        borderRadius: 15,
+        margin: 8
+    },
+    button: {
+        backgroundColor: "#6986ED",
+        padding: 12,
+        marginTop: 10,
+        borderRadius: 15,
+        width: 300
+    },
+    buttonText: {
+        fontSize: 19,
+        color: "#ffffff",
+        textAlign: 'center'
+    },
+    paragraph: {
+        fontSize: 15,
+        color: "#ffffff",
+        textAlign: "center",
+        marginTop: 40
+    },
+    signInNav: {
+        fontSize: 15,
+        color: "#6986ED",
     }
 });
