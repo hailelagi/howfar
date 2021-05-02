@@ -2,14 +2,11 @@ import { StyleSheet, Text, View, Image, TextInput, TouchableOpacity } from 'reac
 import logo from "../assets/icon.png"
 import React from "react";
 
-export default function SignIn() {
+export default function SignIn({ navigation }) {
     return (
         <View style={styles.container}>
-            <Text style={styles.screenInfo}>sign in</Text>
             <Image style={styles.logo} source={logo}/>
-
             <Text style={styles.heading}>How far, make we chat? 💬</Text>
-
             <View>
                 <TextInput style={styles.field} placeholder="Enter your school email first :)"/>
                 <TextInput style={styles.field} placeholder="Password"/>
@@ -20,7 +17,7 @@ export default function SignIn() {
                         Login
                     </Text>
                 </TouchableOpacity>
-                <Text style={styles.paragraph} onPress={() => console.log("sign up nav")}>
+                <Text style={styles.paragraph} onPress={() => navigation.navigate("SignUp")}>
                     I don't have an account <Text style={styles.signUpNav}>Sign Up</Text>
                 </Text>
             </View>
@@ -35,11 +32,6 @@ const styles = StyleSheet.create({
         backgroundColor: '#161618',
         alignItems: 'center',
         justifyContent: 'center',
-    },
-    screenInfo: {
-        fontSize: 18,
-        color: "#ffffff",
-        textTransform: "capitalize",
     },
     logo: {
         alignItems: 'center',

@@ -1,13 +1,92 @@
 import {StyleSheet, Text, View, TextInput, TouchableOpacity, Image} from 'react-native';
-import React from "react";
+import React, { useState } from "react";
 import logo from "../assets/icon.png";
 
-export default function SignUp() {
+export default function SignUp({ navigation }) {
+    const [email, setEmail] = useState("");
+    const [password, setPassword] = useState("");
+    const [confirmPassword, setConfirmPassword] = useState("");
+    const [validEmail, setValidEmail] = useState("not-valid");
+    const [validPassword, setValidPassword] = useState("not-valid-pass");
+    const [confirmValidPassword, setValidConfirmPassword] = useState(
+        "not-valid-pass"
+    );
+    const [flashError, setflashError] = useState("");
+    const [redirect, setRedirect] = useState(false);
+
+    // TODO: validate input
+    function handleSignup(e) {
+        // e.preventDefault();
+        // create auth token and login
+        fetch("/api/registration", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/x-www-form-urlencoded",
+            },
+            mode: "cors",
+            body: `user[email]=${email}&user[password]=${password}&user[password_confirmation]=${confirmPassword}`,
+        })
+            .then((res) => res.json())
+            .then((payload) => {
+                if (payload.hasOwnProperty("data")) {
+                    // TODO: replace with cookie - refresh cycle
+                    setflashError("");
+                    setAccess(payload.data.access_token);
+                    setRefresh(payload.data.renewal_token);
+                    setRedirect(true);
+                } else {
+                    setflashError(
+                        payload.error.message +
+                        " reason: " +
+                        Object.keys(payload.error.errors) +
+                        " " +
+                        Object.values(payload.error.errors)
+                    );
+                }
+            })
+            .catch((error) => {
+                setflashError(error);
+            });
+    }
+
+    function handleValidation(e) {
+        const isEmail = /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i;
+        const name = e.target.name;
+        const value = e.target.value;
+
+        if (name === "user[email]") {
+            setEmail(value);
+            if (isEmail.test(value)) {
+                setValidEmail("valid");
+            } else {
+                setValidEmail("not-valid");
+            }
+        }
+        if (name === "user[password]") {
+            setPassword(value);
+            if (value.length >= 8) {
+                setValidPassword("valid-pass");
+            } else {
+                setValidPassword("not-valid-pass");
+            }
+        }
+        if (name === "user[password_confirmation]") {
+            setConfirmPassword(value);
+            if (value.length >= 8 && value === password) {
+                setValidConfirmPassword("valid-pass");
+            } else {
+                setValidConfirmPassword("not-valid-pass");
+            }
+        }
+    }
+
+    const flash = <div className="flash">{flashError}</div>;
+
     return (
         <View style={styles.container}>
             <Image style={styles.logo} source={logo}/>
 
-            <Text style={styles.heading}> Join ever evolving conversations near you! how far? 👋 </Text>
+            <Text style={styles.heading}> Join ever evolving conversations near you! 👋</Text>
 
             <TextInput style={styles.field} placeholder="Mark"/>
             <TextInput style={styles.field} placeholder="Musa"/>
@@ -23,7 +102,7 @@ export default function SignUp() {
                 </Text>
             </TouchableOpacity>
 
-            <Text style={styles.paragraph} onPress={() => console.log("sign up nav")}>
+            <Text style={styles.paragraph} onPress={() => navigation.navigate("SignIn")}>
                 i already have an account! <Text style={styles.signInNav}>sign in</Text>
             </Text>
         </View>
