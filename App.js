@@ -27,7 +27,7 @@ const MyStack = () => {
 export default function App() {
   return (
       <NavigationContainer>
-        <SignUp />
+        <SignIn />
       </NavigationContainer>
   );
 }

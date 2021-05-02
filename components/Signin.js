@@ -8,10 +8,10 @@ export default function SignIn() {
             <Text style={styles.screenInfo}>sign in</Text>
             <Image style={styles.logo} source={logo}/>
 
-            <Text style={styles.heading}>welcome to bubbles! 💬</Text>
+            <Text style={styles.heading}>How far, make we chat? 💬</Text>
 
             <View>
-                <TextInput style={styles.field} placeholder="Enter your school email"/>
+                <TextInput style={styles.field} placeholder="Enter your school email first :)"/>
                 <TextInput style={styles.field} placeholder="Password"/>
                 <TouchableOpacity
                     onPress={() => console.log("sign in")}
@@ -51,7 +51,7 @@ const styles = StyleSheet.create({
         color: "#fff",
         padding: 5,
         fontSize: 30,
-        width: 200,
+        width: 300,
         textTransform: "capitalize",
         textAlign: "center",
         paddingBottom: 10,

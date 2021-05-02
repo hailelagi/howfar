@@ -7,12 +7,12 @@ export default function SignUp() {
         <View style={styles.container}>
             <Image style={styles.logo} source={logo}/>
 
-            <Text style={styles.heading}> Join ever evolving conversations near you! 🌐 </Text>
+            <Text style={styles.heading}> Join ever evolving conversations near you! how far? 👋 </Text>
 
-            <TextInput style={styles.field} placeholder="John"/>
-            <TextInput style={styles.field} placeholder="Bull"/>
-            <TextInput style={styles.field} placeholder="johnbull@gmail.com"/>
-            <TextInput style={styles.field} placeholder="+234 803 335 4342"/>
+            <TextInput style={styles.field} placeholder="Mark"/>
+            <TextInput style={styles.field} placeholder="Musa"/>
+            <TextInput style={styles.field} placeholder="markmusa@gmail.com"/>
+            <TextInput style={styles.field} placeholder="+234 803 333 4455"/>
             <TextInput style={styles.field} placeholder="*********"/>
 
             <TouchableOpacity
