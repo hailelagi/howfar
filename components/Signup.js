@@ -86,14 +86,13 @@ export default function SignUp({ navigation }) {
         <View style={styles.container}>
             <Image style={styles.logo} source={logo}/>
 
-            <Text style={styles.heading}> Join ever evolving conversations near you! 👋</Text>
-
+            <Text style={styles.heading}>Join ever evolving social circles as a creator or a fan 👋</Text>
+            <Text style={styles.heading}>Not sure yet? that's okay you can change your mind at anytime!</Text>
             <TextInput style={styles.field} placeholder="Mark"/>
             <TextInput style={styles.field} placeholder="Musa"/>
             <TextInput style={styles.field} placeholder="markmusa@gmail.com"/>
             <TextInput style={styles.field} placeholder="+234 803 333 4455"/>
             <TextInput style={styles.field} placeholder="*********"/>
-
             <TouchableOpacity
                 onPress={() => console.log("sign up")}
                 style={styles.button}>
@@ -124,12 +123,10 @@ const styles = StyleSheet.create({
     },
     heading: {
         color: "#ffffff",
-        padding: 5,
-        fontSize: 22,
+        fontSize: 16,
         width: 300,
-        margin: 10,
-        textTransform: "capitalize",
-        textAlign: "center"
+        textAlign: "center",
+        marginBottom: 10
     },
     title: {
         color: "#000",

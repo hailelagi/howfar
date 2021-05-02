@@ -6,20 +6,23 @@ export default function SignIn({ navigation }) {
     return (
         <View style={styles.container}>
             <Image style={styles.logo} source={logo}/>
-            <Text style={styles.heading}>How far, make we chat? 💬</Text>
+            <Text style={styles.heading}>
+                <Text style={styles.logoHeading}>How far</Text> is the social network
+                for Nigerian creatives to express their art and get paid.
+            </Text>
             <View>
-                <TextInput style={styles.field} placeholder="Enter your school email first :)"/>
+                <TextInput style={styles.field} placeholder="Enter your username"/>
                 <TextInput style={styles.field} placeholder="Password"/>
                 <TouchableOpacity
-                    onPress={() => console.log("sign in")}
+                    onPress={() => navigation.navigate("Home")}
                     style={styles.button}>
                     <Text style={styles.buttonText}>
                         Login
                     </Text>
                 </TouchableOpacity>
-                <Text style={styles.paragraph} onPress={() => navigation.navigate("SignUp")}>
-                    I don't have an account <Text style={styles.signUpNav}>Sign Up</Text>
-                </Text>
+                <Text style={styles.paragraph}>
+                    Don't have an account? :(</Text>
+                <Text style={styles.signUpNav} onPress={() => navigation.navigate("SignUp")} >get started!</Text>
             </View>
 
         </View>
@@ -42,11 +45,15 @@ const styles = StyleSheet.create({
     heading: {
         color: "#fff",
         padding: 5,
-        fontSize: 30,
+        fontSize: 18,
         width: 300,
-        textTransform: "capitalize",
         textAlign: "center",
-        paddingBottom: 10,
+        paddingBottom: 10
+    },
+    logoHeading: {
+        fontSize: 21,
+        fontWeight: 600,
+        color: "#6986ED",
     },
     field: {
         backgroundColor: "#fff",
@@ -70,10 +77,20 @@ const styles = StyleSheet.create({
         fontSize: 15,
         color: "#ffffff",
         textAlign: "center",
-        marginTop: 40
+        marginTop: 35
     },
     signUpNav: {
         fontSize: 15,
         color: "#6986ED",
+        textAlign: "center",
+        marginTop: 10,
+        marginBottom: 10
+    },
+    bubble: {
+        fontSize: 17,
+        color: "#6986ED",
+        textAlign: "center",
+    },
+    highlightContent: {
     }
 });
